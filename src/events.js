@@ -1,0 +1,24 @@
+
+const stringify = require('json-stringify-safe')
+
+module.exports = {
+  event(name, data) {
+    if (!name)
+      return console.error('[AXM] emit.name is missing')
+
+    let inflight_obj = {}
+
+    if (typeof(data) == 'object')
+      inflight_obj = JSON.parse(stringify(data))
+    else {
+      inflight_obj.data = data || null
+    }
+
+    inflight_obj.__name = name
+
+    this.send({
+      type : 'human:event',
+      data : inflight_obj
+    })
+  }
+}
