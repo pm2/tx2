@@ -1,7 +1,7 @@
 
 ## IX2
 
-Report Metrics, Actions, Events, Issues to PM2 and PM2.io.
+Report Events, Metrics, IssuesActions, Events to PM2 and PM2.io.
 
 ```javascript
 const ix2 = require('ix2')
@@ -26,13 +26,13 @@ exC.set(40)
 
 // Issue
 ix2.issue(new Error('overweight')
-ix2.issue('overweight'
+ix2.issue('overweight')
 
 // Action
 ix2.action('lift weights', (cb) => {
   cb({ success: true })
 })
-``
+```
 
 ## License
 
