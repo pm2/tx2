@@ -1,6 +1,3 @@
-
-// Hacked https://github.com/felixge/node-measured
-
 // Based on http://en.wikipedia.org/wiki/Binary_Heap
 // as well as http://eloquentjavascript.net/appendix2.html
 module.exports = BinaryHeap;

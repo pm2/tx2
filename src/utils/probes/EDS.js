@@ -1,6 +1,4 @@
 
-// Hacked https://github.com/felixge/node-measured
-
 var BinaryHeap = require('./BinaryHeap');
 var units      = require('./units');
 

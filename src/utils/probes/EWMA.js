@@ -1,6 +1,4 @@
 
-// Hacked https://github.com/felixge/node-measured
-
 var units = require('./units');
 
 module.exports = ExponentiallyWeightedMovingAverage;

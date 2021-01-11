@@ -1,7 +1,5 @@
 
-// Hacked from https://github.com/felixge/node-measured
-
-var EDS = require('../EDS.js');
+var EDS = require('./EDS.js');
 
 function Histogram(opts) {
   var self = this;

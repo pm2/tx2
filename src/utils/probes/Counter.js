@@ -1,6 +1,4 @@
 
-// Hacked from https://github.com/felixge/node-measured
-
 module.exports = Counter;
 
 function Counter(opts) {

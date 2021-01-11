@@ -1,8 +1,8 @@
 
 // Hacked from https://github.com/felixge/node-measured
 
-var units = require('../units');
-var EWMA  = require('../EWMA');
+var units = require('./units');
+var EWMA  = require('./EWMA');
 
 function Meter(opts) {
   var self = this;
