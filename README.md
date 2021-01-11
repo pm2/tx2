@@ -17,7 +17,7 @@ px2.metric({
   }
 })
 
-px2.metric('burned calories', () => {
+px2.metric('burnt calories', () => {
   return 30
 })
 
