@@ -1,37 +1,43 @@
 
-## IX2
+## RX2
 
-Report Events, Metrics, IssuesActions, Events to PM2 and PM2.io.
+Report Events, Metrics, Issues, Actions to PM2 and PM2.io.
 
 ```javascript
-const ix2 = require('ix2')
+const rx2 = require('rx2')
 
 // Event
-ix2.event('eat', { food: 'poke' })
+rx2.event('eat', { food: 'poke' })
 
 // Metric
-px2.metric({
+rx2.metric({
   name: 'calories',
   val: () => {
     return 20
   }
 })
 
-px2.metric('burnt calories', () => {
+rx2.metric('burnt calories', () => {
   return 30
 })
 
-let exC = px2.metric('excess calories')
+let exC = rx2.metric('excess calories')
 exC.set(40)
 
 // Issue
-ix2.issue(new Error('overweight')
-ix2.issue('overweight')
+rx2.issue(new Error('overweight')
+rx2.issue('overweight')
 
 // Action
-ix2.action('lift weights', (cb) => {
+rx2.action('lift weights', (cb) => {
   cb({ success: true })
 })
+```
+
+```bash
+$ pm2 start app.js
+# Inspect primitive reported
+$ pm2 show app
 ```
 
 ## License
