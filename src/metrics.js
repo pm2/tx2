@@ -27,6 +27,9 @@ module.exports = {
         value: getValue(this._metrics[probe_name].value)
       }
 
+      if (this._metrics[probe_name].unit)
+        cooked_data[probe_name].unit = this._metrics[probe_name].unit
+
       /**
        * Attach aggregation mode
        */
