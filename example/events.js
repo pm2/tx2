@@ -1,29 +1,29 @@
 
-const px2 = require('..')
+const tx2 = require('..')
 
-console.log(px2)
+console.log(tx2)
 
-px2.emit('test', { data: 'yes' })
+tx2.emit('test', { data: 'yes' })
 
 // Metrics variants
-px2.metric({
+tx2.metric({
   name: 'test',
   val: () => {
     return 20
   }
 })
 
-px2.metric('test2', () => {
+tx2.metric('test2', () => {
   return 30
 })
 
-let m = px2.metric('test3', 0)
+let m = tx2.metric('test3', 0)
 
 m.set(45)
 
 // Histogram
 
-let n = px2.histogram({
+let n = tx2.histogram({
   name: 'histo1',
   val: () => {
     return Math.random()
@@ -33,7 +33,7 @@ let n = px2.histogram({
 // OR
 n.update(Math.random() * 1000)
 
-px2.action('toto', (cb) => {
+tx2.action('toto', (cb) => {
   return cb({yessai:true})
 })
 

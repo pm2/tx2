@@ -1,38 +1,38 @@
 
-## RX2
+## tx2
 
 Report Events, Metrics, Issues, Actions to PM2 and PM2.io.
 
 ```javascript
-const rx2 = require('rx2')
+const tx2 = require('tx2')
 
 // Event
-rx2.event('eat', { food: 'poke' })
+tx2.event('eat', { food: 'poke' })
 
 // Metric
-rx2.metric({
+tx2.metric({
   name: 'calories',
   val: () => {
     return 20
   }
 })
 
-rx2.metric('burnt calories', () => {
+tx2.metric('burnt calories', () => {
   return 30
 })
 
-let exC = rx2.metric('excess calories')
+let exC = tx2.metric('excess calories')
 exC.set(40)
 
 // return true
-rx2.metricExists('burnt calories')
+tx2.metricExists('burnt calories')
 
 // Issue
-rx2.issue(new Error('overweight')
-rx2.issue('overweight')
+tx2.issue(new Error('overweight')
+tx2.issue('overweight')
 
 // Action
-rx2.action('lift weights', (cb) => {
+tx2.action('lift weights', (cb) => {
   cb({ success: true })
 })
 ```
