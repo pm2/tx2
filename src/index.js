@@ -8,7 +8,11 @@ const EventEmitter = require('events')
 
 const stringify = require('json-stringify-safe')
 
-class PX2 extends EventEmitter {
+/**
+ * @namespace TX2
+ * @class TX2
+ */
+class TX2 extends EventEmitter {
   constructor() {
     super()
 
@@ -27,6 +31,12 @@ class PX2 extends EventEmitter {
     p_interval.unref()
   }
 
+
+  /**
+   * Send JSON to PM2
+   * @private
+   * @param {object} args
+   */
   send(args) {
     this.emit('data', args)
     if (!process.send) {
@@ -45,6 +55,4 @@ class PX2 extends EventEmitter {
   }
 }
 
-
-
-module.exports = PX2
+module.exports = TX2

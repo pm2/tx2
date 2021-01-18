@@ -1,5 +1,21 @@
 
 module.exports = {
+  /**
+   * Expose an action/function triggerable via PM2 or PM2.io
+   * @memberof TX2
+   * @param {string} action_name Name of the action
+   * @param {object} [opts] Optional parameter
+   * @param {function} fn Function to be called
+   *
+   * @example <caption>Action without arguments</caption>
+   * tx2.action('run_query', (cb) => {
+   *   cb({ success: true })
+   * })
+   * @example <caption>Action with arguments</caption>
+   * tx2.action('run_query', arg1, (cb) => {
+   *   cb({ success: arg1 })
+   * })
+   */
   action(action_name, opts, fn) {
     if (!fn) {
       fn = opts

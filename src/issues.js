@@ -41,6 +41,14 @@ module.exports = {
 
     return jsonize(s_err)
   },
+
+  /**
+   * Sends an Issue
+   * @memberof TX2
+   * @param {string|Error} err Error object or string to notify
+   * @example
+   * tx2.issue(new Error('bad error')
+   */
   issue: function(err) {
     var ret_err = this._interpretError(err)
 

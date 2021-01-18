@@ -71,6 +71,25 @@ module.exports = {
   metricExists: function(metric_name) {
     return !!this._metrics[metric_name]
   },
+
+  /**
+   * @typedef {Object} Metric
+   * @property {function} val Return the current value
+   * @property {function} set Set value
+   */
+
+  /**
+   * Expose a Metric
+   * @memberof TX2
+   * @param {string} name Name of the metric
+   * @param {function} [function] Optional function to trigger every second to retrieve updated value
+   * @returns {Metric} A metrics object
+   * @example
+   * tx2.metric('metric_name', () => obj.value)
+   * @example
+   * let mn = tx2.metric('metric_name')
+   * mn.set(20)
+   */
   metric : function(opts, val) {
     let name, value, unit
 
@@ -106,6 +125,16 @@ module.exports = {
       }
     }
   },
+
+  /**
+   * Expose a Metric of type Histogram. This computes a value accross based on the measurement option and will return a value accordingly
+   @private
+   * @memberof TX2
+   * @param {string} [opts.name] Metric Name
+   * @param {string} [opts.measurement] Measurement made on time period, can be 'min', 'max','sum','count','variance','mean','stddev','median','p75','p95','p99','p999'
+   * @param {function} [opts.value] Function to call to retrieve new value every second
+   * @returns {}
+   */
   histogram : function(opts) {
     if (!opts.name)
       return console.error('[Metric][Histogram] Name not defined')
@@ -135,6 +164,13 @@ module.exports = {
 
     return histogram
   },
+
+  /**
+   * Expose a Metric of type: Meter. This (???)
+   * @private
+   * @param {string} opts.name Name of the Metric
+   * @returns {}
+   */
   meter : function(opts) {
     if (!opts.name)
       return console.error('[Metric][Meter] Name not defined')
@@ -152,16 +188,39 @@ module.exports = {
 
     return meter
   },
+
+  /**
+   * Expose a metric of type: Counter.
+   * @typedef {object} Counter
+   * @property {function} inc Increment value
+   * @property {function} dev Decrement value
+   */
+
+  /**
+   * Expose a Metric of type: Counter. By calling .inc() or .dec() you update that value
+   * @memberof TX2
+   * @param {string} name Name of the Metric
+   * @returns {Counter}
+   */
   counter : function(opts) {
-    if (!opts.name)
+    let name, unit, agg_type = DEFAULT_AGGREGATION
+
+    if (typeof(opts) == 'string')
+      name = opts
+    else {
+      name = opts.name
+      unit = opts.unit
+    }
+
+    if (!name)
       return console.error('[Metric][Counter] Name not defined')
 
     var counter = new Counter()
 
-    this._metrics[opts.name] = {
+    this._metrics[name] = {
       value: function() { return counter.val() },
-      agg_type: opts.agg_type || DEFAULT_AGGREGATION,
-      unit : opts.unit
+      agg_type: agg_type,
+      unit : unit || null
     }
 
     return counter
