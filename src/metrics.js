@@ -68,6 +68,9 @@ module.exports = {
       value: reporter
     }
   },
+  metricExists: function(metric_name) {
+    return !!this._metrics[metric_name]
+  },
   metric : function(opts, val) {
     let name, value, unit
 

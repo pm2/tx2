@@ -14,6 +14,14 @@ describe('Metric', function() {
     })
   })
 
+  it('should metric exists', () => {
+    should(px2.metricExists('test')).eql(true)
+  })
+
+  it('should unknown metric not exists', () => {
+    should(px2.metricExists('unknowsss')).eql(false)
+  })
+
   it('should have metric present', (done) => {
     px2.once('data', (dt) => {
       should(dt.type).eql('axm:monitor')

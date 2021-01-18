@@ -24,6 +24,9 @@ rx2.metric('burnt calories', () => {
 let exC = rx2.metric('excess calories')
 exC.set(40)
 
+// return true
+rx2.metricExists('burnt calories')
+
 // Issue
 rx2.issue(new Error('overweight')
 rx2.issue('overweight')
