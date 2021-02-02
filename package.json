@@ -1,6 +1,6 @@
 {
   "name": "tx2",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Metrics, Issues, Actions, Events reporting library",
   "main": "index.js",
   "scripts": {

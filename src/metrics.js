@@ -87,15 +87,27 @@ module.exports = {
    * @example
    * tx2.metric('metric_name', () => obj.value)
    * @example
+   * tx2.metric('metric_name', 'unit', () => obj.value)
+   * @example
    * let mn = tx2.metric('metric_name')
    * mn.set(20)
    */
-  metric : function(opts, val) {
-    let name, value, unit
+  metric : function(opts, unit, val) {
+    let name, value
 
-    if (typeof(opts) == 'string') {
+    // tx2.metric('metric-name', 'unit', () => variable)
+    if (typeof(opts) == 'string' && typeof(unit) == 'string') {
       name = opts
+      unit = unit
       value = val
+    }
+    else if (typeof(opts) == 'string' && typeof(unit) == 'function') {
+      name = opts
+      value = unit
+    }
+    else if (typeof(opts) == 'string' && typeof(unit) == 'number') {
+      name = opts
+      value = unit
     }
     else if (typeof(opts) === 'object') {
       name = opts.name

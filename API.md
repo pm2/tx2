@@ -102,6 +102,10 @@ tx2.metric('metric_name', () => obj.value)
 ```
 **Example**  
 ```js
+tx2.metric('metric_name', 'unit', () => obj.value)
+```
+**Example**  
+```js
 let mn = tx2.metric('metric_name')
 mn.set(20)
 ```
