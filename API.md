@@ -142,5 +142,5 @@ Expose a metric of type: Counter.
 | Name | Type | Description |
 | --- | --- | --- |
 | inc | <code>function</code> | Increment value |
-| dev | <code>function</code> | Decrement value |
+| dec | <code>function</code> | Decrement value |
 
