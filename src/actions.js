@@ -52,8 +52,12 @@ module.exports = {
       })
     }
 
-    process.on('message', function(data) {
+    process.on('message', (data) => {
       if (!data) return false
+
+      // Notify the action
+      if (data && (data == action_name || data.msg == action_name))
+        this.event('action triggered', { action_name, opts })
 
       // In case 2 arguments has been set but no options has been transmitted
       if (fn.length === 2 && typeof(data) === 'string' && data === action_name)
