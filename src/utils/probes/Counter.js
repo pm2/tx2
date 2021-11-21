@@ -12,11 +12,13 @@ Counter.prototype.val = function() {
 };
 
 Counter.prototype.inc = function(n) {
-  this._count += (n || 1);
+  const incBy = n == null ? 1 : n
+  this._count += incBy;
 };
 
 Counter.prototype.dec = function(n) {
-  this._count -= (n || 1);
+  const decBy = n == null ? 1 : n
+  this._count -= decBy;
 };
 
 Counter.prototype.reset = function(count) {

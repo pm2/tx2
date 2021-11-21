@@ -58,3 +58,33 @@ describe('Metric', function() {
   })
 
 })
+
+describe('counter', () => {
+  describe('inc', () => {
+    const test = ({incBy, expectedValue}) => () => {
+      const counter = tx2.counter('Test counter')
+      counter.inc(incBy)
+      should(counter.val()).eql(expectedValue)
+    }
+
+    it('should increment by 1 when called with no arguments', test({expectedValue: 1}))
+    it('should increment by 1 when called with 1', test({incBy: 1, expectedValue: 1}))
+    it('should increment by -1 when called with -1', test({incBy: -1, expectedValue: -1}))
+    it('should increment by 0 when called with 0', test({incBy: 0, expectedValue: 0}))
+    it('should increment by 17.3 when called with 17.3', test({incBy: 17.3, expectedValue: 17.3}))
+  })
+
+  describe('dec', () => {
+    const test = ({decBy, expectedValue}) => () => {
+      const counter = tx2.counter('Test counter')
+      counter.dec(decBy)
+      should(counter.val()).eql(expectedValue)
+    }
+
+    it('should decrement by 1 when called with no arguments', test({expectedValue: -1}))
+    it('should decrement by 1 when called with 1', test({decBy: 1, expectedValue: -1}))
+    it('should decrement by -1 when called with -1', test({decBy: 1, expectedValue: -1}))
+    it('should decrement by 0 when called with 0', test({decBy: 0, expectedValue: 0}))
+    it('should decrement by 17.3 when called with 17.3', test({decBy: 17.3, expectedValue: -17.3}))
+  })
+})
