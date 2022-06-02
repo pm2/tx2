@@ -48,7 +48,7 @@ tx2.action('run_query', (cb) => {
 ```
 **Example** *(Action with arguments)*  
 ```js
-tx2.action('run_query', arg1, (cb) => {
+tx2.action('run_query',(arg1,cb) => {
   cb({ success: arg1 })
 })
 ```
